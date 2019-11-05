@@ -1,26 +1,62 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import * as actionCreators from './store/actions/index';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  clickHandler = () => {
+    const {testAction, test} = this.props;
+
+
+    if (test === 'alex') {
+      testAction('alex1');
+      return;
+    }
+
+    testAction('alex');
+  };
+
+  render () {
+    const {test} = this.props;
+
+    return (
+      <Router>
+        <div onClick={this.clickHandler}>
+          some text
+        </div>
+
+        <Switch>
+          <Route path="/test">
+            <Test />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
 }
 
-export default App;
+function Test() {
+  return <div>hey</div>;
+}
+
+const mapStateToProps = state => {
+  return {
+    test: state.test,
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    testAction: (data) => dispatch(actionCreators.testAction(data)),
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(App);
