@@ -1,38 +1,50 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
-import * as actionCreators from './store/actions/index';
+import {
+  OuterWrapper,
+  Wrapper,
+  MainContentWrapper,
+  DropDownButtonWrapper,
+  ItemsWrapper,
+  Title,
+  Description,
+  SearchBar,
+  SearchButton,
+  SearchButtonText,
+  SearchIcon,
+} from './SearchScreenStyles';
+import {Item} from "./Item/Item";
+import icon from "./Imgs/IconSearch.svg";
 
-
-class SearchScreen extends Component {
+export class SearchScreen extends Component {
   render () {
-    const {test} = this.props;
-
     return (
-      <Router>
-        <div onClick={this.clickHandler}>
-          some text
-        </div>
+      <OuterWrapper>
+        <Wrapper>
 
-        <Switch>
-          <Route path="/test">
-            <Test />
-          </Route>
-        </Switch>
-      </Router>
+          <MainContentWrapper>
+            <Title>Найди своего шефа</Title>
+            <Description>Введите станцию метро на которой вы хотите найти шефа</Description>
+          </MainContentWrapper>
+
+          <DropDownButtonWrapper>
+            <SearchBar/>
+            <SearchButton>
+              <SearchIcon src={icon}/>
+              <SearchButtonText>
+                Найти шефа сейчас
+              </SearchButtonText>
+            </SearchButton>
+          </DropDownButtonWrapper>
+
+          <ItemsWrapper>
+            <Item/>
+            <Item/>
+            <Item/>
+            <Item/>
+          </ItemsWrapper>
+
+        </Wrapper>
+      </OuterWrapper>
     );
   }
 }
-
-
-const mapStateToProps = state => {
-
-};
-
-const mapDispatchToProps = dispatch => {
-
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(App);
