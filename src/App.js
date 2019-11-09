@@ -5,8 +5,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
 } from "react-router-dom";
+import {SearchScreen} from "./SearchScreen/SearchScreen";
 
 class App extends Component {
   clickHandler = () => {
@@ -26,13 +26,9 @@ class App extends Component {
 
     return (
       <Router>
-        <div onClick={this.clickHandler}>
-          some text
-        </div>
-
         <Switch>
-          <Route path="/test">
-            <Test />
+          <Route path="/">
+            <SearchScreen/>
           </Route>
         </Switch>
       </Router>
