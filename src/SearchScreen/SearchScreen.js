@@ -23,7 +23,7 @@ export class SearchScreen extends Component {
 
           <MainContentWrapper>
             <Title>Найди своего шефа</Title>
-            <Description>Введите станцию метро на которой вы хотите найти шефа</Description>
+            <Description>test Введите станцию метро на которой вы хотите найти шефа</Description>
           </MainContentWrapper>
 
           <DropDownButtonWrapper>
